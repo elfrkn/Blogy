@@ -4,6 +4,7 @@ using Blogy.DataAccessLayer.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Blogy.DataAccessLayer.Migrations
 {
     [DbContext(typeof(BlogyContext))]
-    partial class BlogyContextModelSnapshot : ModelSnapshot
+    [Migration("20240229105234_mig2")]
+    partial class mig2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,14 +49,9 @@ namespace Blogy.DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("WriterId")
-                        .HasColumnType("int");
-
                     b.HasKey("ArticleId");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("WriterId");
 
                     b.ToTable("Articles");
                 });
@@ -83,19 +80,11 @@ namespace Blogy.DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CommentId"), 1L, 1);
 
-                    b.Property<int>("ArticleId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CommentDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CommentId");
-
-                    b.HasIndex("ArticleId");
 
                     b.ToTable("Comments");
                 });
@@ -150,39 +139,10 @@ namespace Blogy.DataAccessLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Blogy.EntityLayer.Concrete.Writer", "Writer")
-                        .WithMany("Articles")
-                        .HasForeignKey("WriterId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Category");
-
-                    b.Navigation("Writer");
-                });
-
-            modelBuilder.Entity("Blogy.EntityLayer.Concrete.Comment", b =>
-                {
-                    b.HasOne("Blogy.EntityLayer.Concrete.Article", "Article")
-                        .WithMany("Comments")
-                        .HasForeignKey("ArticleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Article");
-                });
-
-            modelBuilder.Entity("Blogy.EntityLayer.Concrete.Article", b =>
-                {
-                    b.Navigation("Comments");
                 });
 
             modelBuilder.Entity("Blogy.EntityLayer.Concrete.Category", b =>
-                {
-                    b.Navigation("Articles");
-                });
-
-            modelBuilder.Entity("Blogy.EntityLayer.Concrete.Writer", b =>
                 {
                     b.Navigation("Articles");
                 });

@@ -4,6 +4,7 @@ using Blogy.DataAccessLayer.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Blogy.DataAccessLayer.Migrations
 {
     [DbContext(typeof(BlogyContext))]
-    partial class BlogyContextModelSnapshot : ModelSnapshot
+    [Migration("20240229110101_mig4")]
+    partial class mig4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,6 +31,9 @@ namespace Blogy.DataAccessLayer.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ArticleId"), 1L, 1);
+
+                    b.Property<int?>("ArticleId1")
+                        .HasColumnType("int");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
@@ -51,6 +56,8 @@ namespace Blogy.DataAccessLayer.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ArticleId");
+
+                    b.HasIndex("ArticleId1");
 
                     b.HasIndex("CategoryId");
 
@@ -93,9 +100,14 @@ namespace Blogy.DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("WriterId")
+                        .HasColumnType("int");
+
                     b.HasKey("CommentId");
 
                     b.HasIndex("ArticleId");
+
+                    b.HasIndex("WriterId");
 
                     b.ToTable("Comments");
                 });
@@ -144,6 +156,10 @@ namespace Blogy.DataAccessLayer.Migrations
 
             modelBuilder.Entity("Blogy.EntityLayer.Concrete.Article", b =>
                 {
+                    b.HasOne("Blogy.EntityLayer.Concrete.Article", null)
+                        .WithMany("Articles")
+                        .HasForeignKey("ArticleId1");
+
                     b.HasOne("Blogy.EntityLayer.Concrete.Category", "Category")
                         .WithMany("Articles")
                         .HasForeignKey("CategoryId")
@@ -164,17 +180,21 @@ namespace Blogy.DataAccessLayer.Migrations
             modelBuilder.Entity("Blogy.EntityLayer.Concrete.Comment", b =>
                 {
                     b.HasOne("Blogy.EntityLayer.Concrete.Article", "Article")
-                        .WithMany("Comments")
+                        .WithMany()
                         .HasForeignKey("ArticleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Blogy.EntityLayer.Concrete.Writer", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("WriterId");
 
                     b.Navigation("Article");
                 });
 
             modelBuilder.Entity("Blogy.EntityLayer.Concrete.Article", b =>
                 {
-                    b.Navigation("Comments");
+                    b.Navigation("Articles");
                 });
 
             modelBuilder.Entity("Blogy.EntityLayer.Concrete.Category", b =>
@@ -185,6 +205,8 @@ namespace Blogy.DataAccessLayer.Migrations
             modelBuilder.Entity("Blogy.EntityLayer.Concrete.Writer", b =>
                 {
                     b.Navigation("Articles");
+
+                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }
