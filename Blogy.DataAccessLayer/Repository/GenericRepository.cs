@@ -10,7 +10,8 @@ namespace Blogy.DataAccessLayer.Repository
 {
     public class GenericRepository<T> : IGenericDal<T> where T : class
     {
-        private readonly BlogyContext _context;
+        BlogyContext _context = new BlogyContext();
+
         public void Delete(int id)
         {
             var values = _context.Set<T>().Find(id);
