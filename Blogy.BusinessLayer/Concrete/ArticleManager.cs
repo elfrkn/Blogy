@@ -31,7 +31,12 @@ namespace Blogy.BusinessLayer.Concrete
            
         }
 
-        public Article TGetById(int id)
+		public List<Article> TGetArticleWithWriter()
+		{
+            return _articleDal.GetArticleWithWriter();
+		}
+
+		public Article TGetById(int id)
         {
             //eger id degerine gore yetkisi varsa
             return _articleDal.GetById(id);
