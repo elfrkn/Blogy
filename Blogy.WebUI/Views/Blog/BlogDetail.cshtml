@@ -1,0 +1,38 @@
+﻿﻿
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+@await Component.InvokeAsync("_BlogListHeadComponentPartial")
+<body>
+    @await Component.InvokeAsync("_BlogListNavbarComponentPartial")
+    @await Component.InvokeAsync("_BlogDetailByCoverInfoComponentPartial")
+    <section class="section">
+        <div class="container">
+            <div class="row blog-entries element-animate">
+                <div class="col-md-12 col-lg-8 main-content">
+                    @await Component.InvokeAsync("_BlogDetailByBlogContentComponentPartial")
+                    @await Component.InvokeAsync("_BlogDetailCommentComponentPartial")
+                </div>
+                <div class="col-md-12 col-lg-4 sidebar">
+                    <div class="sidebar-box search-form-wrap">
+                        <form action="#" class="sidebar-search-form">
+                            <span class="bi-search"></span>
+                            <input type="text" class="form-control" id="s" placeholder="Aranacak kelimeyi giriniz...">
+                        </form>
+                    </div>
+                    @await Component.InvokeAsync("_BlogDeatilByWriterInfoComponentPartial")
+                    @await Component.InvokeAsync("_BlogDeatilGetOtherBlogPostByWriterComponentPartial")
+                    @await Component.InvokeAsync("_BlogDetailCategoryListComponentPartial")
+                    @await Component.InvokeAsync("_BlogDetailTagsComponentPartial")
+                </div>
+            </div>
+        </div>
+    </section>
+    @await Component.InvokeAsync("_BlogDetailOtherPostComponentPartial")
+    @await Component.InvokeAsync("_FooterComponentPartial")
+    @await Component.InvokeAsync("_ScriptComponentPartial")
+</body>
+</html>
