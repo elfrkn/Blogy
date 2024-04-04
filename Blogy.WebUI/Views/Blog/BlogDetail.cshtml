@@ -8,13 +8,13 @@
 @await Component.InvokeAsync("_BlogListHeadComponentPartial")
 <body>
     @await Component.InvokeAsync("_BlogListNavbarComponentPartial")
-    @await Component.InvokeAsync("_BlogDetailByCoverInfoComponentPartial")
+    @await Component.InvokeAsync("_BlogDetailByCoverInfoComponentPartial",new {id=ViewBag.i})
     <section class="section">
         <div class="container">
             <div class="row blog-entries element-animate">
                 <div class="col-md-12 col-lg-8 main-content">
-                    @await Component.InvokeAsync("_BlogDetailByBlogContentComponentPartial")
-                    @await Component.InvokeAsync("_BlogDetailCommentComponentPartial")
+                    @await Component.InvokeAsync("_BlogDetailByBlogContentComponentPartial", new { id = ViewBag.i })
+                    @await Component.InvokeAsync("_BlogDetailCommentComponentPartial", new { id = ViewBag.i })
                 </div>
                 <div class="col-md-12 col-lg-4 sidebar">
                     <div class="sidebar-box search-form-wrap">
@@ -23,7 +23,7 @@
                             <input type="text" class="form-control" id="s" placeholder="Aranacak kelimeyi giriniz...">
                         </form>
                     </div>
-                    @await Component.InvokeAsync("_BlogDeatilByWriterInfoComponentPartial")
+                    @await Component.InvokeAsync("_BlogDeatilByWriterInfoComponentPartial", new { id = ViewBag.i })
                     @await Component.InvokeAsync("_BlogDeatilGetOtherBlogPostByWriterComponentPartial")
                     @await Component.InvokeAsync("_BlogDetailCategoryListComponentPartial")
                     @await Component.InvokeAsync("_BlogDetailTagsComponentPartial")

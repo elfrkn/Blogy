@@ -19,5 +19,11 @@ namespace Blogy.DataAccessLayer.EntityFramework
 			var values = context.Articles.Include(x => x.Writer).ToList();
 			return values;
 		}
-	}
+
+        public Writer GetWriterInfoByArticleWriter(int id)
+        {
+			var values = context.Articles.Where(x => x.ArticleId == id).Select(y => y.Writer).FirstOrDefault();
+			return values;
+        }
+    }
 }

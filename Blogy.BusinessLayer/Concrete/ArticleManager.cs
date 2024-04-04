@@ -47,6 +47,11 @@ namespace Blogy.BusinessLayer.Concrete
             return _articleDal.GetListAll();
         }
 
+        public Writer TGetWriterInfoByArticleWriter(int id)
+        {
+            return _articleDal.GetWriterInfoByArticleWriter(id);
+        }
+
         public void TInsert(Article entity)
         {
             if(entity.Title !=null && entity.Description.Length >50 && entity.CategoryId >= 0)

@@ -16,6 +16,9 @@ builder.Services.AddScoped<ICategoryService, CategoryManager>();
 builder.Services.AddScoped<IArticleDal, EfArticleDal>();
 builder.Services.AddScoped<IArticleService, ArticleManager>();
 
+builder.Services.AddScoped<ICommentDal, EfCommentDal>();
+builder.Services.AddScoped<ICommentService, CommentManager>();
+
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<BlogyContext>().AddErrorDescriber<CustomIdentityValidator>();
 builder.Services.AddControllersWithViews();
 

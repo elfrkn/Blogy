@@ -1,12 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Blogy.BusinessLayer.Abstract;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Blogy.WebUI.ViewComponents.BlogDetailsViewComponents
 {
     public class _BlogDetailCommentComponentPartial :ViewComponent
     {
-        public IViewComponentResult Invoke()
+        private readonly ICommentService _commentService;
+
+        public _BlogDetailCommentComponentPartial(ICommentService commentService)
         {
-            return View();
+            _commentService = commentService;
+        }
+
+        public IViewComponentResult Invoke(int id)
+        {
+            var values = _commentService.TGetCommentsByArticleId(id);
+            return View(values);
         }
            
     }

@@ -15,5 +15,8 @@ namespace Blogy.EntityLayer.Concrete
         public int ArticleId { get; set; }
 
         public Article Article { get; set; }
+        public  string  NamSurname { get; set; }
+        public  string Email { get; set; }
+        public  bool  Status { get; set; }  
     }
 }
