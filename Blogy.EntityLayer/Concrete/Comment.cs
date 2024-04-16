@@ -13,7 +13,6 @@ namespace Blogy.EntityLayer.Concrete
 
         public DateTime  CommentDate { get; set; }
         public int ArticleId { get; set; }
-
         public Article Article { get; set; }
         public  string  NamSurname { get; set; }
         public  string Email { get; set; }

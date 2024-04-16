@@ -14,7 +14,13 @@ namespace Blogy.DataAccessLayer.EntityFramework
 	public class EfArticleDal : GenericRepository<Article>, IArticleDal
 	{
 		BlogyContext context = new BlogyContext();
-		public List<Article> GetArticleWithWriter()
+
+        public List<Article> GetArticlesByWriter(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Article> GetArticleWithWriter()
 		{
 			var values = context.Articles.Include(x => x.Writer).ToList();
 			return values;
