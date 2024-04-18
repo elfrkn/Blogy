@@ -14883,7 +14883,7 @@ dl {
 
 /* Sidebar */
 .sidebar {
-  min-height: calc(100vh - 70px);
+  min-height: calc(100vh);
   background: -webkit-gradient(linear, left top, left bottom, from(#e6e5f2), to(#4599cd));
   background: linear-gradient(to bottom, #e6e5f2, #4599cd);
   font-family: "Rubik", sans-serif;
@@ -15457,7 +15457,7 @@ dl {
   -webkit-transition: width 0.25s ease, margin 0.25s ease;
   transition: width 0.25s ease, margin 0.25s ease;
   width: 100%;
-  min-height: calc(100vh - 70px);
+  min-height: calc(100vh);
   padding-top: 70px;
   display: -webkit-box;
   display: -ms-flexbox;

@@ -17,7 +17,8 @@ namespace Blogy.DataAccessLayer.EntityFramework
 
         public List<Article> GetArticlesByWriter(int id)
         {
-            throw new NotImplementedException();
+            var values = context.Articles.Where(x => x.AppUserId == id).ToList();
+            return values;
         }
 
         public List<Article> GetArticleWithWriter()
