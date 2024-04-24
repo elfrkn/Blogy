@@ -1,13 +1,14 @@
 ﻿@model List<Blogy.EntityLayer.Concrete.Article>
+
 @{
     ViewData["Title"] = "MyBlogList";
     Layout = "~/Areas/Writer/Views/WriterLayout/Index.cshtml";
+    int count = 0;
 }
 
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">Size Ait Bloglar</h3>
-        <h1>@ViewBag.id</h1>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Bloglar</a></li>
@@ -21,38 +22,38 @@
                 <div class="card-body">
                     <h4 class="card-title">Blog Listesi</h4>
                     <p class="card-description">
-                       Aşağıdaki tablodan size ait blogları görüntüleyebilir üzerinde işlem yapabilirsiniz
+                        Aşağıdaki tablodan size ait blogları görüntüleyebilir, üzerlerinde işlem yapabilirsiniz.
                     </p>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Blog Başlığı</th>
+                                    <th>Blog Başlığı.</th>
                                     <th>Tarih</th>
                                     <th>Kategori</th>
                                     <th>Sil</th>
                                     <th>Güncelle</th>
                                     <th>Blog Yorumları</th>
+                                </tr>
                             </thead>
                             <tbody>
-                                @foreach(var item in Model)
+                                @foreach (var item in Model)
                                 {
+                                    count++;
                                     <tr>
-                                        <td>@item.ArticleId</td>
+                                        <td>@count</td>
                                         <td>@item.Title</td>
-                                        <td>@item.CreatedDate</td>
-                                        <td>@item.CategoryId</td>
+                                        <td>@(((DateTime)item.CreatedDate).ToString("dd-MMM-yyyy"))</td>
+                                        <td>@item.Category.CategoryName</td>
                                         <td><a href="/Writer/Blog/DeleteBlog/@item.ArticleId" class="btn btn-danger">Sil</a></td>
-                                        <td><a href="#" class="btn btn-success">Güncelle</a></td>
-                                        <td><a href="#" class="btn btn-warning">Blog Yorumları</a></td>
-                                       
+                                        <td><a href="/Writer/Blog/EditBlog/@item.ArticleId" class="btn btn-success">Güncelle</a></td>
+                                        <td><a href="#" class="btn btn-warning">Yorumlar</a></td>
                                     </tr>
                                 }
-                                
                             </tbody>
                         </table>
-                        <td><a href="/Writer/Blog/CreateBlog" class="btn btn-primary">Yeni Blog Girişi</a></td>
+                        <a href="/Writer/Blog/CreateBlog/" class="btn btn-primary">Yeni Blog Girişi</a>
                     </div>
                 </div>
             </div>

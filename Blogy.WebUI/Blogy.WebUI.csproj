@@ -20,7 +20,10 @@
 
   <ItemGroup>
     <Folder Include="Areas\Writer\Data\" />
-    <Folder Include="Areas\Writer\Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\ckeditor\.circleci\config.yml" />
   </ItemGroup>
 
 </Project>

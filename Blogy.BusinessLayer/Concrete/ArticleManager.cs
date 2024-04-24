@@ -20,20 +20,13 @@ namespace Blogy.BusinessLayer.Concrete
 
         public void TDelete(int id)
         {
-            if (id != 0)
-            {
-                _articleDal.Delete(id);
-            }
-            else
-            {
-                //hata mesaji
-            }
-           
+
+            _articleDal.Delete(id); 
         }
 
-        public List<Article> TGetArticlesByWriter(int id)
+        public List<Article> TGetArticlesByWriterAndCategory(int id)
         {
-            return _articleDal.GetArticlesByWriter(id);
+            return _articleDal.GetArticlesByWriterAndCategory(id);
         }
 
         public List<Article> TGetArticleWithWriter()
@@ -43,7 +36,7 @@ namespace Blogy.BusinessLayer.Concrete
 
 		public Article TGetById(int id)
         {
-            //eger id degerine gore yetkisi varsa
+           
             return _articleDal.GetById(id);
         }
 
