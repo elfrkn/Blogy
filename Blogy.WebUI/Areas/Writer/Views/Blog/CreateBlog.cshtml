@@ -7,7 +7,6 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">Yeni Blog Ekleme Sayfası</h3>
-        <h1>@ViewBag.id</h1>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Blog İşlemleri</a></li>
@@ -35,7 +34,7 @@
                             <input type="text" asp-for="CoverImageUrl" class="form-control" />
                             <br />
                             <label>Blog Detayları</label>
-                            <textarea rows="5" class="form-control" asp-for="Description"></textarea>
+                            <textarea rows="25" class="form-control" id="myeditor" asp-for="Description"></textarea>
                             <br />
                             <button class="btn btn-info">Blogu Kaydet</button>
                         </form>

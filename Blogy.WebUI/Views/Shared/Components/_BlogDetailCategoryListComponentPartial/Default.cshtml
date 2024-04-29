@@ -1,10 +1,10 @@
-﻿@model List<Category>
+﻿@model List<CategoryNameCountViewModel>
 <div class="sidebar-box">
-    <h3 class="heading">Categories</h3>
+    <h3 class="heading">Kategoriler</h3>
     <ul class="categories">
         @foreach (var item in Model)
         {
-            <li><a href="#">@item.CategoryName <span>(0)</span></a></li>
+            <li><a href="#">@item.CategoryName <span>(@item.Count)</span></a></li>
         }
        
         

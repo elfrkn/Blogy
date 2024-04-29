@@ -21,6 +21,8 @@ namespace Blogy.DataAccessLayer.Context
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Writer> Writers { get; set; }
+        public DbSet<Message> Messages { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
 
     }
 }

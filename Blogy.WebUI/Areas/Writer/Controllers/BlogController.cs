@@ -15,12 +15,14 @@ namespace Blogy.WebUI.Areas.Writer.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly IArticleService _articleService;
         private readonly ICategoryService _categoryService;
+        private readonly ICommentService _commentService;
 
-        public BlogController(UserManager<AppUser> userManager, IArticleService articleService, ICategoryService categoryService)
+        public BlogController(UserManager<AppUser> userManager, IArticleService articleService, ICategoryService categoryService, ICommentService commentService)
         {
             _categoryService = categoryService;
             _articleService = articleService;
             _userManager = userManager;
+            _commentService = commentService;
         }
         [Route("")]
         [Route("MyBlogList")]
@@ -87,5 +89,13 @@ namespace Blogy.WebUI.Areas.Writer.Controllers
             _articleService.TUpdate(article);
             return RedirectToAction("MyBlogList");
         }
+
+        [Route("BlogArticleComment/{id}")]
+        public IActionResult BlogArticleComment(int id)
+        {
+            var values = _commentService.TGetCommentsByArticleId(id);
+            return View(values);
+        }
+    
     }
 }

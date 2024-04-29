@@ -24,7 +24,7 @@
                         </form>
                     </div>
                     @await Component.InvokeAsync("_BlogDeatilByWriterInfoComponentPartial", new { id = ViewBag.i })
-                    @await Component.InvokeAsync("_BlogDeatilGetOtherBlogPostByWriterComponentPartial")
+                    @await Component.InvokeAsync("_BlogDeatilGetOtherBlogPostByWriterComponentPartial", new { id = ViewBag.i })
                     @await Component.InvokeAsync("_BlogDetailCategoryListComponentPartial")
                     @await Component.InvokeAsync("_BlogDetailTagsComponentPartial")
                 </div>

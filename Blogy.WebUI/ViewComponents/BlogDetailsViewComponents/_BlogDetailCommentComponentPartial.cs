@@ -17,6 +17,8 @@ namespace Blogy.WebUI.ViewComponents.BlogDetailsViewComponents
             var values = _commentService.TGetCommentsByArticleId(id);
             return View(values);
         }
+
+
            
     }
 }

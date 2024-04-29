@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,6 +15,13 @@ namespace Blogy.BusinessLayer.Abstract
 
         List<Article> TGetArticlesByWriterAndCategory(int id);
 
-       
+        Article TGetArticleByIdWithWriterIdAndCategory(int id);
+        List<Article> TGetOtherBlogPostByWriter(int id);
+
+        List<Article> TGetLast4BlogPost();
+        
+        public List<Article> TGetArticleFilterList(string search);
+
+
     }
 }

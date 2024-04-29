@@ -2,9 +2,10 @@
 
 namespace Blogy.WebUI.Areas.Writer.Controllers
 {
+    [Area("Writer")]
     public class WriterLayoutController : Controller
     {
-        [Area("Writer")]
+    
         public IActionResult Index()
         {
             return View();

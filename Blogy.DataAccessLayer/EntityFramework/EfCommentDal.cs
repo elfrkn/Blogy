@@ -2,6 +2,7 @@
 using Blogy.DataAccessLayer.Context;
 using Blogy.DataAccessLayer.Repository;
 using Blogy.EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +19,7 @@ namespace Blogy.DataAccessLayer.EntityFramework
             var values = context.Comments.Where(x => x.ArticleId == id).ToList();
             return values;
         }
+
+
     }
 }

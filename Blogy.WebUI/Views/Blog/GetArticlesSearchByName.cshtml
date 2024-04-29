@@ -1,0 +1,18 @@
+﻿@model List<Blogy.EntityLayer.Concrete.Article>
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+@await Component.InvokeAsync("_BlogListHeadComponentPartial")
+<body>
+    @await Component.InvokeAsync("_BlogListNavbarComponentPartial")
+ 
+    @await Component.InvokeAsync("_BlogListComponentPartial")
+
+    @await Component.InvokeAsync("_FooterComponentPartial")
+
+    @await Component.InvokeAsync("_ScriptComponentPartial")
+</body>
+</html>

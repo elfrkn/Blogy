@@ -1,12 +1,25 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Blogy.BusinessLayer.Abstract;
+using Blogy.EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Blogy.WebUI.ViewComponents.BlogDetailsViewComponents
 {
     public class _BlogDeatilGetOtherBlogPostByWriterComponentPartial :ViewComponent
     {
-        public IViewComponentResult Invoke()
+        private readonly IArticleService _articleService;
+
+        public _BlogDeatilGetOtherBlogPostByWriterComponentPartial(IArticleService articleService)
         {
-            return View();
+            _articleService = articleService;
+        }
+
+        public IViewComponentResult  Invoke(int id)
+        {
+            var values = _articleService.TGetOtherBlogPostByWriter(id);
+            return View(values);
+
+           
         }
     }
 }

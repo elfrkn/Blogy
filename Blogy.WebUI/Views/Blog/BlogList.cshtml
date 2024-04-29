@@ -1,4 +1,5 @@
-﻿﻿
+﻿@using Blogy.EntityLayer.Concrete
+@model List<Article>﻿
 @{
     Layout = null;
 }
@@ -8,13 +9,11 @@
 @await Component.InvokeAsync("_BlogListHeadComponentPartial")
 <body>
     @await Component.InvokeAsync("_BlogListNavbarComponentPartial")
-
+    
     @await Component.InvokeAsync("_BlogListComponentPartial")
 
     @await Component.InvokeAsync("_FooterComponentPartial")
 
     @await Component.InvokeAsync("_ScriptComponentPartial")
-    
-
 </body>
 </html>

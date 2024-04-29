@@ -7,15 +7,15 @@
         <li class="nav-item nav-profile">
             <a href="#" class="nav-link">
                 <div class="nav-profile-image">
-                    <img src="~/Breeze-Free-Bootstrap-Admin-Template-1.0.0/template/assets/images/faces/face1.jpg" alt="profile" />
+                    <img src=@ViewBag.p alt="profile" />
                     <span class="login-status online"></span>
                     <!--change to offline or busy as needed-->
                 </div>
                 <div class="nav-profile-text d-flex flex-column pr-3">
-                    <span class="font-weight-medium mb-2">Henry Klein</span>
-                    <span class="font-weight-normal">$8,753.00</span>
+                    <span class="font-weight-medium mb-2">@ViewBag.n</span>
+                    <span class="font-weight-normal">Blog Sayısı</span>
                 </div>
-                <span class="badge badge-danger text-white ml-3 rounded">3</span>
+                <span class="badge badge-danger text-white ml-3 rounded">@ViewBag.b</span>
             </a>
         </li>
         <li class="nav-item">
@@ -31,15 +31,27 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/Writer/Support/Index/">
+            <a class="nav-link" href="/Writer/Support/SendSupportMessage/">
                 <i class="mdi mdi-voice menu-icon"></i>
                 <span class="menu-title">Destek</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/Writer/Message/Index/">
+            <a class="nav-link" href="/Writer/Message/MessageList/">
                 <i class="mdi mdi-message-reply-text menu-icon"></i>
                 <span class="menu-title">Mesajlarım</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Writer/Comment/CommentList/">
+                <i class="mdi mdi-comment menu-icon"></i>
+                <span class="menu-title">Yorumlarım</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Writer/Chart/Index/">
+                <i class="mdi mdi-chart-bar menu-icon"></i>
+                <span class="menu-title">Grafik</span>
             </a>
         </li>
         <li class="nav-item">

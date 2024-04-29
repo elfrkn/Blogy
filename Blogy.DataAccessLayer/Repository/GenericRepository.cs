@@ -3,6 +3,7 @@ using Blogy.DataAccessLayer.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,6 +18,11 @@ namespace Blogy.DataAccessLayer.Repository
             var values = _context.Set<T>().Find(id);
             _context.Set<T>().Remove(values);
             _context.SaveChanges();
+        }
+
+        public List<T> GetByFilter(Expression<Func<T, bool>> filter)
+        {
+            return _context.Set<T>().Where(filter).ToList();
         }
 
         public T GetById(int id)
