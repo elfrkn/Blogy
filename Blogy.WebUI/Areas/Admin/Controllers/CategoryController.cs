@@ -46,7 +46,7 @@ namespace Blogy.WebUI.Areas.Admin.Controllers
         public IActionResult CreateCategory(Category category)
         {
             _categoryService.TInsert(category);
-            return RedirectToAction("Inbox");
+            return RedirectToAction("Index");
         }
     }
 }
