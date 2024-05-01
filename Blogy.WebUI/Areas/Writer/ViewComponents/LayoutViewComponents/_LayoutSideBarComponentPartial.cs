@@ -17,7 +17,7 @@ namespace Blogy.WebUI.Areas.Writer.ViewComponents.LayoutViewComponents
             _articleService = articleService;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(int id)
+        public async Task<IViewComponentResult> InvokeAsync()
         {
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
             ViewBag.p = values.ImageUrl;

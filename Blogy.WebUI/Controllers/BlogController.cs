@@ -22,11 +22,17 @@ namespace Blogy.WebUI.Controllers
 
         public IActionResult Index(string search)
         {
-            
+
+            return View();
+
+		}
+        public IActionResult BlogList(string search)
+        {
+
 			if (!string.IsNullOrEmpty(search))
 			{
 				var articles = _articleService.TGetArticleFilterList(search);
-                ViewBag.Search = search;
+				ViewBag.Search = search;
 				return View(articles);
 			}
 			else
@@ -35,13 +41,7 @@ namespace Blogy.WebUI.Controllers
 				return View(values);
 
 			}
-
 		}
-        public IActionResult BlogList()
-        {
-
-                return View();
-        }
 
         public IActionResult BlogDetail(int id)
         {

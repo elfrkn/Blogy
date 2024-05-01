@@ -1,22 +1,37 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Xml.Linq;
+using System.Net.Http.Headers;
+using Newtonsoft.Json;
+using Blogy.WebUI.Areas.Writer.Models;
 
 namespace Blogy.WebUI.Areas.Writer.ViewComponents.LayoutViewComponents
 {
     public class _WheatherComponentPartial : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
-            string api = "c5c14e816cc35024478a0eac41bb67bc";
-            string connection = "https://api.openweathermap.org/data/2.5/weather?q=istanbul&mode=xml&lang=tr&units=metric&appid=" + api;
-            XDocument document = XDocument.Load(connection);
-            ViewBag.temperature = document.Descendants("temperature").ElementAt(0).Attribute("value").Value;
-            ViewBag.city = document.Descendants("city").ElementAt(0).Attribute("name").Value;
-            ViewBag.weather = document.Descendants("clouds").ElementAt(0).Attribute("name").Value;
-            string lastUpdate = document.Descendants("lastupdate").ElementAt(0).Attribute("value").Value;
-           
-            return View();
-           
+
+
+            var client = new HttpClient();
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri("https://weatherapi-com.p.rapidapi.com/forecast.json?q=%C4%B0stanbul&days=7"),
+                Headers =
+    {
+        { "X-RapidAPI-Key", "01e2c3d585msh1afb95d2ac454c2p1bb84djsnc18b9688678f" },
+        { "X-RapidAPI-Host", "weatherapi-com.p.rapidapi.com" },
+    },
+            };
+            using (var response = await client.SendAsync(request))
+            {
+                response.EnsureSuccessStatusCode();
+                var body = await response.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<WeatherViewModel>(body);
+                return View(values);
+            }
+
         }
     }
 }
+

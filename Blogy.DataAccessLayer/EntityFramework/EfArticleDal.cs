@@ -27,7 +27,7 @@ namespace Blogy.DataAccessLayer.EntityFramework
 
         public List<Article> GetArticleFilterList(string search)
         {
-            var values = context.Articles.Where(x => x.Title.Contains(search)).ToList();
+            var values = context.Articles.Where(x => x.Title.Contains(search)).Include(x=>x.Writer).ToList();
             return values;
         }
 
