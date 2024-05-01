@@ -42,6 +42,8 @@ işlemlerini,destek mesajlarını ve blog kategorilerini yönetebilir.
 ![CommentsAndCategory](https://github.com/elfrkn/Blogy/assets/101409313/952b27ca-b1cc-4c99-ae22-07b601d3628a)
 # Blog Yorum Girişi Ve Son 4 Post
 ![LeaveCommentAnsLast4Post](https://github.com/elfrkn/Blogy/assets/101409313/53303d45-2876-41d9-a1e7-79b291db548b)
+# Hata Sayfası
+![404](https://github.com/elfrkn/Blogy/assets/101409313/fa288f81-e0cc-417f-b227-b6d6369bbffc)
 
 
 
